@@ -1,5 +1,5 @@
-set realname = "Henno Havenga"
-set from = "hhavenga92@gmail.com"
+set realname = "Name and Surname"
+set from = "email@email.com"
 set envelope_from = yes
 
 # Folder hooks
