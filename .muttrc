@@ -1,0 +1,68 @@
+set realname = "Henno Havenga"
+set from = "hhavenga92@gmail.com"
+set envelope_from = yes
+
+# Folder hooks
+folder-hook 'account.outlook' 'source ~/.mutt/account.outlook'
+folder-hook 'account.gmail' 'source ~/.mutt/account.gmail'
+
+# Default account
+source ~/.mutt/account.gmail
+
+# Macros for switching accounts
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/account.gmail<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/account.outlook<enter><change-folder>!<enter>'
+
+#G to get mail
+bind index G imap-fetch-mail
+set editor = "vim"
+unset record
+set move = no
+set charset ="utf-8"
+
+#Colors
+color header brightred default subject
+color hdrdefault cyan default
+color quoted green default
+color status cyan default
+color indicator red default
+color normal white default
+color tree cyan default
+
+#More Information
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]─%V──[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?─── %l|%L"
+
+#InMailNavigation
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+bind pager R  group-reply
+
+# View attachments properly.
+bind attach <return> view-mailcap
+
+# convert text/html to text/plain using the "copiousoutput" entry
+# for text/html from ~/.mailcap
+
+auto_view text/html
+
+# Optionally prefer text/plain to text/html
+# Doing this means that you will need to manually view text/html attachments
+# in messages that are multipart/alternative with both text/plain and
+# text/html attachments.
+
+alternative_order text/plain text/html
+
+#AdressBook
+# Abook
+set query_command= "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
