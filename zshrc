@@ -8,6 +8,7 @@ export ZSH=/home/henno/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
+export TERM="xterm-256color"
 # ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -83,6 +84,10 @@ fi
 # Example aliases
   alias thesis="cd ~/Dropbox/Personal/Documents/msc/writing/thesis/"
   alias blog="cd ~/Projects/h-havenga.github.io/"
+  alias update="sudo apt update && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean"
+  alias lss="ls -l --block-size=M"
+  alias lynx="lynx -vikeys"
+  alias media="cd /media/henno/"
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
