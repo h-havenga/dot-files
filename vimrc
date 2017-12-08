@@ -18,6 +18,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-latex/vim-latex'
 Plugin 'panozzaj/vim-autocorrect'
 Plugin 'blindFS/vim-taskwarrior'
+Plugin 'jalvesaq/nvim-r'
+Plugin 'rhysd/vim-grammarous'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end() 
@@ -39,7 +43,7 @@ set autoindent
 set indentkeys=
 set breakindent
 set showbreak=\ \
-filetype indent off
+" filetype indent off
 " filetype plugin indent on
 
 " Line numbering
@@ -70,7 +74,7 @@ nnoremap <C-H> <C-W><C-H>
 set foldmethod=indent
 set foldlevel=99
 
-" Enable automatic closing of (,{,[,"
+" Enable automatic closing of (,{,[, and the enter i mode again
 :inoremap ( ()<Esc>i
 :inoremap [ []<Esc>i
 :inoremap { {}<Esc>i
@@ -82,7 +86,7 @@ nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
 
 " Limit mutt characters 
-au BufRead /tmp/mutt-* set tw=75
+au BufRead /tmp/mutt-* set tw=70
 
 " Syntax highlighting
 let python_highlight_all=1
@@ -97,3 +101,18 @@ if has("spell")
   highlight PmenuSel ctermfg=black ctermbg=lightgray
   set sps=best,10                    
 endif
+
+" Send selection to R with space bar
+vmap t <Plug>RDSendSelection 
+nmap t <Plug>RDSendLine
+
+" Remaps for common command mistakes
+command! Q :q
+command! Qall :qall
+command! QAll :qall
+command! W :w
+command! Wq :wq
+command! WQ :wq
+command! Wqall :wqall
+command! WQall :wqall
+command! WQAll :wqall
